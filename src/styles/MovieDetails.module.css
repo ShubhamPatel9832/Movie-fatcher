@@ -2,6 +2,8 @@
     padding: 0.8rem;
     border: 1px solid #fa525297;
     border-radius: 0.4rem;
+    position: relative;
+    padding-top: 3rem;
 }
 
 .movieDetails .details {
@@ -27,4 +29,19 @@
 
 .movieDetails .description p {
     margin-bottom: 1rem;
+}
+
+.closeMovie {
+    background-color: transparent;
+    border: none;
+    color: #fa5252;
+    font-size: 1rem;
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+.closeMovie:hover {
+    transform: scale(1.2);
 }

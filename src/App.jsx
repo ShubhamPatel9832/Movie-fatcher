@@ -8,6 +8,10 @@ const KEY = "65ddd0f";
 export const API_URL = `http://www.omdbapi.com/?apikey=${KEY}`;
 
 function App() {
+    // state
+    // drived state
+    // effect
+    // handlefuntion
     const [query, setQuery] = useState("spider");
     const [movies, setMovies] = useState([]);
     const [movieDetails, setMovieDetails] = useState(null);
@@ -18,7 +22,7 @@ function App() {
     //     const activeMovieID = movieDetails.imdbID;
     // }
 
-    //  const activeMovieID = movieDetails?.imdbID; // drived class
+    const activeMovieID = movieDetails?.imdbID; // drived class
 
     useEffect(
         function () {
@@ -52,6 +56,11 @@ function App() {
         setMovieDetails(data);
     }
 
+    function handleCloseMovieDetail() {
+        setMovieDetails(null);
+    }
+
+    // jsx
     return (
         <div>
             <Nav
@@ -64,6 +73,7 @@ function App() {
                 handleMovieCardClick={handleMovieCardClick}
                 movieDetails={movieDetails}
                 activeMovieID={activeMovieID}
+                handleCloseMovieDetail={handleCloseMovieDetail}
             />
         </div>
     );

@@ -2,7 +2,13 @@ import Box1 from "./Box1";
 import Box2 from "./Box2";
 import styles from "../styles/Main.module.css";
 
-function Main({ movies, handleMovieCardClick, movieDetails, activeMovieID }) {
+function Main({
+    movies,
+    handleMovieCardClick,
+    movieDetails,
+    activeMovieID,
+    handleCloseMovieDetail,
+}) {
     return (
         <main className={styles.main}>
             <Box1
@@ -10,7 +16,10 @@ function Main({ movies, handleMovieCardClick, movieDetails, activeMovieID }) {
                 handleMovieCardClick={handleMovieCardClick}
                 activeMovieID={activeMovieID}
             />
-            <Box2 movieDetails={movieDetails} />
+            <Box2
+                movieDetails={movieDetails}
+                handleCloseMovieDetail={handleCloseMovieDetail}
+            />
         </main>
     );
 }
