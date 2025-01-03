@@ -1,0 +1,30 @@
+.movieDetails {
+    padding: 0.8rem;
+    border: 1px solid #fa525297;
+    border-radius: 0.4rem;
+}
+
+.movieDetails .details {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.movieDetails .details img {
+    height: 12rem;
+    border-radius: 0.3rem;
+}
+
+.movieDetails .details > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.movieDetails .details > div p {
+    padding-bottom: 2rem;
+}
+
+.movieDetails .description p {
+    margin-bottom: 1rem;
+}
