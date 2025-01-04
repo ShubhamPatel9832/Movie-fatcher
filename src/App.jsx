@@ -14,21 +14,26 @@ function App() {
     // handlefuntion
     const [query, setQuery] = useState("spider");
     const [movies, setMovies] = useState([]);
+    const [watchList, setWatchList] = useState([]);
     const [movieDetails, setMovieDetails] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingMovieDetails, setIsLoadingMovieDetails] = useState(false);
 
     const resultCount = movies.length;
 
-    // if (movieDetails !== null) {
-    //     const activeMovieID = movieDetails.imdbID;
-    // }
-
-    const activeMovieID = movieDetails?.imdbID; // drived class
+    const activeMovieID = movieDetails?.imdbID;
 
     useEffect(
         function () {
             async function fetchMovies() {
+                setIsLoading(true);
+                setMovies([]);
+
                 const responce = await fetch(`${API_URL}&s=${query}`);
                 const data = await responce.json();
+                setMovies(data.Search || []);
+
+                setIsLoading(false);
                 setMovies(data.Search || []);
             }
 
@@ -51,8 +56,14 @@ function App() {
             return setMovieDetails(null);
         }
 
+        setIsLoadingMovieDetails(true);
+        setMovieDetails(null);
+
         const responce = await fetch(`${API_URL}&i=${imdbID}`);
         const data = await responce.json();
+        setMovieDetails(data);
+
+        setIsLoadingMovieDetails(false);
         setMovieDetails(data);
     }
 
@@ -60,6 +71,21 @@ function App() {
         setMovieDetails(null);
     }
 
+    function handleAddMovieToWatchList(movieDeatils, userRating) {
+        const watchedMovie = {
+            name: movieDeatils.Title,
+            poster: movieDeatils.Poster,
+            releaseDate: movieDeatils.Released,
+            runtime: movieDeatils.Runtime,
+            imdbRating: Number(movieDeatils.imdbRating),
+            userRating: userRating,
+            imdbID: movieDeatils.imdbID,
+        };
+
+        setWatchList(function (watchList) {
+            return [...watchList, watchedMovie];
+        });
+    }
     // jsx
     return (
         <div>
@@ -74,6 +100,10 @@ function App() {
                 movieDetails={movieDetails}
                 activeMovieID={activeMovieID}
                 handleCloseMovieDetail={handleCloseMovieDetail}
+                isLoading={isLoading}
+                isLoadingMovieDetails={isLoadingMovieDetails}
+                handleAddMovieToWatchList={handleAddMovieToWatchList}
+                watchList={watchList}
             />
         </div>
     );

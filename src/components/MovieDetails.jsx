@@ -1,8 +1,13 @@
 import styles from "../styles/MovieDetails.module.css";
 import Emoji from "./Emoji";
+import StarRating from "./StarRating";
 
 // function MovieDetails({ movie }) {
-function MovieDetails({ movieDetails, handleCloseMovieDetail }) {
+function MovieDetails({
+    movieDetails,
+    handleCloseMovieDetail,
+    handleAddMovieToWatchList,
+}) {
     const {
         Title,
         Poster,
@@ -14,6 +19,10 @@ function MovieDetails({ movieDetails, handleCloseMovieDetail }) {
         Director,
         Genre: genre,
     } = movieDetails;
+
+    function handleAction(userAction) {
+        handleAddMovieToWatchList(movieDetails, userAction);
+    }
 
     return (
         <div className={styles.movieDetails}>
@@ -42,6 +51,12 @@ function MovieDetails({ movieDetails, handleCloseMovieDetail }) {
                     </p>
                 </div>
             </div>
+            <StarRating
+                color="#fa5252"
+                defaultRating={0}
+                size={10}
+                action={handleAction}
+            />
 
             <div className={styles.description}>
                 <p>

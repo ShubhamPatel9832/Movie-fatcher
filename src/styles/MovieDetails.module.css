@@ -27,6 +27,10 @@
     padding-bottom: 2rem;
 }
 
+.movieDetails .description {
+    padding-top: 2rem;
+}
+
 .movieDetails .description p {
     margin-bottom: 1rem;
 }

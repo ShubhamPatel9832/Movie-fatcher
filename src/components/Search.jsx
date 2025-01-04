@@ -8,7 +8,7 @@ function Search({ handleChangeSearchQuery, query }) {
                 onChange={handleChangeSearchQuery}
                 value={query}
             />
-            <button>Search</button>
+            {/* <button>Search</button> */}
         </form>
     );
 }
