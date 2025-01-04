@@ -1,3 +1,8 @@
 .box2 {
     width: 50%;
+    overflow-y: scroll;
+    /* scrollbar-width: none; */
+    max-height: calc(100vh - 14rem);
+    scrollbar-width: thin;
+    padding-right: 1rem;
 }
