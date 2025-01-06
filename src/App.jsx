@@ -89,14 +89,34 @@ function App() {
         if (index !== -1) {
             watchList[index] = watchedMovie;
             setWatchList(function (watchList) {
+                localStorage.setItem(
+                    "watchMovieList",
+                    JSON.stringify(watchList)
+                );
                 return [...watchList];
             });
         } else {
             setWatchList(function (watchList) {
+                localStorage.setItem(
+                    "watchMovieList",
+                    JSON.stringify(watchList)
+                );
                 return [...watchList, watchedMovie];
             });
         }
     }
+
+    function handleRemoveMovieToWatchList(imdbID) {
+        setWatchList(function (watchList) {
+            watchList = watchList.filter(function (movie) {
+                return movie.imdbID !== imdbID;
+            });
+
+            localStorage.setItem("watchMovieList", JSON.stringify(watchList));
+            return [...watchList]; // this is create a shallow copy it is a refrence type sprid operator lagane se ek shallow copy create hotha hai ye value aeap me store hotha hai age direct [watchList] karege to diffrence nahi kar patha hai
+        });
+    }
+
     // jsx
     return (
         <div>
@@ -115,6 +135,7 @@ function App() {
                 isLoadingMovieDetails={isLoadingMovieDetails}
                 handleAddMovieToWatchList={handleAddMovieToWatchList}
                 watchList={watchList}
+                handleRemoveMovieToWatchList={handleRemoveMovieToWatchList}
             />
         </div>
     );

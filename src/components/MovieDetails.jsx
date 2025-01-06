@@ -1,6 +1,7 @@
 import styles from "../styles/MovieDetails.module.css";
 import Emoji from "./Emoji";
 import StarRating from "./StarRating";
+import { formovieLength } from "../Helper";
 
 // function MovieDetails({ movie }) {
 function MovieDetails({
@@ -44,7 +45,7 @@ function MovieDetails({
                 <div>
                     <h3>{Title}</h3>
                     <p>
-                        {Released} • {Runtime} {genre}
+                        {Released} • {formovieLength(Runtime)} {genre}
                     </p>
                     <p>
                         <Emoji txt="🍅" /> {imdbRating} Tomatos

@@ -12,6 +12,7 @@ function Main({
     isLoadingMovieDetails,
     handleAddMovieToWatchList,
     watchList,
+    handleRemoveMovieToWatchList,
 }) {
     return (
         <main className={styles.main}>
@@ -27,6 +28,7 @@ function Main({
                 isLoadingMovieDetails={isLoadingMovieDetails}
                 handleAddMovieToWatchList={handleAddMovieToWatchList}
                 watchList={watchList}
+                handleRemoveMovieToWatchList={handleRemoveMovieToWatchList}
             />
         </main>
     );

@@ -22,7 +22,7 @@ import styles from "../styles/WatchedMovieList.module.css";
 //     },
 // ];
 
-function WatchedMovieList({ watchList }) {
+function WatchedMovieList({ watchList, handleRemoveMovieToWatchList }) {
     return (
         <div className={styles.watchedMovieList}>
             {watchList.map(function (movie) {
@@ -34,6 +34,10 @@ function WatchedMovieList({ watchList }) {
                         userRating={movie.userRating}
                         length={movie.runtime}
                         key={movie.imdbID}
+                        handleRemoveMovieToWatchList={
+                            handleRemoveMovieToWatchList
+                        }
+                        imdbID={movie.imdbID}
                     />
                 );
             })}
